@@ -1,7 +1,7 @@
 export function useTelegram() {
   const tg = window.Telegram.WebApp;
 
-  const user = tg.initDataUnsafe?.user;
+  const user = tg.initData.user;
 
   if (!user) {
     window.Telegram = {

@@ -3,8 +3,8 @@ import Topblock from "../components/TopBlock.vue";
 import router from "../router/router";
 
 setTimeout(() => {
-  // router.push("/first-player-room");
-  router.push("/second-player-room");
+  router.push("/first-player-room");
+  // router.push("/second-player-room");
 }, 3000);
 </script>
 
