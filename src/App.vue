@@ -10,10 +10,9 @@ const isNavbarVisible = computed(() => {
   return navbarStore.isVisible;
 });
 
-onMounted(() => {
-  useTelegram().tg.ready();
-});
-
+// onMounted(() => {
+//   useTelegram().tg.ready();
+// });
 </script>
 
 <template>
