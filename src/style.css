@@ -1,0 +1,19 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap");
+
+@font-face {
+  font-family: "Wizland";
+  src: url("./assets/fonts/Wizland.ttf") format("truetype");
+}
+
+body {
+  background: linear-gradient(#050000, #280404);
+  font-family: "Roboto", serif !important;
+}
+
+p {
+  opacity: 0.95;
+}
+
+.wizland {
+  font-family: "Wizland", serif;
+}
