@@ -1,4 +1,4 @@
-import { createRouter, createWebHashHistory } from "vue-router";
+import { createRouter, createMemoryHistory } from "vue-router";
 import ChoiseSide from "../pages/ChoiseSide.vue";
 import Home from "../pages/Home.vue";
 import Loading from "../pages/Loading.vue";
@@ -52,7 +52,7 @@ const routes = [
 ];
 
 const router = createRouter({
-  history: createWebHashHistory(),
+  history: createMemoryHistory(),
   routes,
 });
 
