@@ -2,7 +2,7 @@
 import { computed, onMounted } from "vue";
 import Navbar from "./components/Navbar.vue";
 import { useNavbarStore } from "./stores/navbar";
-// import { useTelegram } from "./services/telegram";
+import { useTelegram } from "./services/telegram";
 
 const navbarStore = useNavbarStore();
 
@@ -10,11 +10,11 @@ const isNavbarVisible = computed(() => {
   return navbarStore.isVisible;
 });
 
-// const { tg } = useTelegram();
+const { tg } = useTelegram();
 
-// onMounted(() => {
-//   tg.ready();
-// });
+onMounted(() => {
+  tg.ready();
+});
 </script>
 
 <template>
