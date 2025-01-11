@@ -6,12 +6,15 @@ import { useTelegram } from "./services/telegram";
 
 const navbarStore = useNavbarStore();
 
+const { tg } = useTelegram();
+
 const isNavbarVisible = computed(() => {
   return navbarStore.isVisible;
 });
 
 onMounted(() => {
-  useTelegram().tg.ready();
+  tg.ready();
+  tg.expand();
 });
 </script>
 
