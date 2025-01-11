@@ -1,5 +1,5 @@
 <script setup>
-import Topblock from "../components/topblock.vue";
+import Topblock from "../components/TopBlock.vue";
 import router from "../router/router";
 
 setTimeout(() => {
