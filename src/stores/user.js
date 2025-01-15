@@ -13,6 +13,7 @@ export const useUserStore = defineStore("user", () => {
       isLoading.value = true;
       error.value = null;
       const response = await axios.post("/user/auth", initData);
+      console.log(response);
       user.value = response.data.user;
       isLoggedIn.value = true;
     } catch (e) {

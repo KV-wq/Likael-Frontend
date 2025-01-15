@@ -18,7 +18,7 @@ const { tg } = useTelegram();
 onMounted(async () => {
   tg.ready();
   await userStore.auth(tg.initData);
-  console.log(userStore.userData);
+  // console.log(userStore.userData);
 });
 </script>
 
