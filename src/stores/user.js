@@ -30,7 +30,7 @@ export const useUserStore = defineStore("user", () => {
       error.value = null;
       const response = await axios.post("/user/choise-side", {
         currentSide: side,
-        userId: user.value.user_id,
+        userId: user.value.id,
       });
       user.value.current_side = response.data;
     } catch (e) {
@@ -45,7 +45,7 @@ export const useUserStore = defineStore("user", () => {
       isLoading.value = true;
       error.value = null;
       const response = await axios.patch("/user/get-story", {
-        userId: user.value.user_id,
+        userId: user.value.id,
       });
       user.value.history = response.data; // Обновляем историю
     } catch (e) {
