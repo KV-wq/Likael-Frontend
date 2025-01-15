@@ -3,8 +3,10 @@ import { computed, onMounted } from "vue";
 import Navbar from "./components/Navbar.vue";
 import { useNavbarStore } from "./stores/navbar";
 import { useTelegram } from "./services/telegram";
+import { useUserStore } from "./stores/user";
 
 const navbarStore = useNavbarStore();
+const userStore = useUserStore();
 
 const isNavbarVisible = computed(() => {
   return navbarStore.isVisible;
@@ -12,8 +14,10 @@ const isNavbarVisible = computed(() => {
 
 const { tg } = useTelegram();
 
-onMounted(() => {
+onMounted(async () => {
   tg.ready();
+  await userStore.auth(tg.initData);
+  console.log(userStore.userData);
 });
 </script>
 
