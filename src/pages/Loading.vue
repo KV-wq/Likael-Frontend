@@ -1,9 +1,18 @@
 <script setup>
+import { onMounted } from "vue";
 import router from "../router/router";
+import { useUserStore } from "../stores/user";
 
-setTimeout(() => {
-  router.push("/choise-side");
-}, 1000);
+const userStore = useUserStore();
+
+onMounted(async () => {
+  await userStore.auth(tg.initData);
+  if (userStore.userData.current_side) {
+    router.push("/home");
+  } else {
+    router.push("/choise-side");
+  }
+});
 </script>
 
 <template>
