@@ -17,9 +17,10 @@ const { tg } = useTelegram();
 
 onMounted(async () => {
   tg.ready();
-  await axios.get("/game/rooms");
-  await userStore.auth(tg.initData);
-  console.log(userStore.userData);
+  const ss = await axios.get("/game/rooms");
+  console.log(ss);
+  // await userStore.auth(tg.initData);
+  // console.log(userStore.userData);
 });
 </script>
 
