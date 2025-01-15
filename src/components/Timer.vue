@@ -24,6 +24,18 @@ onMounted(() => {
     if (time.value > 0) {
       time.value--;
       formattedTime.value = formatTime(time.value);
+
+      if (roomStore.currentRoom.player1 == useUserStore().userData.id) {
+        if (roomStore.currentRoom.player2Answer) {
+          clearInterval(interval);
+          roomStore.setStage(roomStore.currentStage + 1);
+        }
+      } else if (roomStore.currentRoom.player2 == useUserStore().userData.id) {
+        if (roomStore.currentRoom.player1Answer) {
+          clearInterval(interval);
+          roomStore.setStage(roomStore.currentStage + 1);
+        }
+      }
     } else {
       clearInterval(interval);
       formattedTime.value = "0:00";
@@ -31,20 +43,6 @@ onMounted(() => {
       router.push("/home");
     }
   }, 1000);
-});
-
-watch(roomStore.currentRoom, (newRoom) => {
-  if (newRoom.player1 == useUserStore().userData.id) {
-    if (newRoom.player2Answer) {
-      clearInterval(interval);
-      roomStore.setStage(roomStore.currentStage + 1);
-    }
-  } else if (newRoom.player2 == useUserStore().userData.id) {
-    if (newRoom.player1Answer) {
-      clearInterval(interval);
-      roomStore.setStage(roomStore.currentStage + 1);
-    }
-  }
 });
 </script>
 
