@@ -3,23 +3,34 @@ import Topblock from "../components/TopBlock.vue";
 import router from "../router/router";
 import { useUserStore } from "../stores/user";
 import { useRoomStore } from "../stores/room";
-import { onMounted } from "vue";
+import { onMounted, watch } from "vue";
 const userStore = useUserStore();
 const roomStore = useRoomStore();
 
 onMounted(async () => {
   await roomStore.startGame();
-
-  console.log(roomStore.currentRoom);
-
-  if (roomStore.isGamePlaying) {
-    if (userStore.userData.current_side == 1) {
-      router.push("/first-player-room");
-    } else if (userStore.userData.current_side == 2) {
-      router.push("/second-player-room");
-    }
-  }
 });
+
+setInterval(() => {
+  roomStore.checkRoom();
+}, 3000);
+
+watch(
+  () => ({
+    isGamePlaying: roomStore.isGamePlaying,
+    currentSide: userStore.userData.current_side,
+  }),
+  ({ isGamePlaying, currentSide }) => {
+    if (isGamePlaying) {
+      if (currentSide == 1) {
+        router.push("/first-player-room");
+      } else if (currentSide == 2) {
+        router.push("/second-player-room");
+      }
+    }
+  },
+  { deep: true }
+);
 </script>
 
 <template>

@@ -19,14 +19,26 @@ export const useRoomStore = defineStore("room", () => {
       const roomId = response.data.roomId;
 
       const currentRoom = await axios.get("/game/room", {
-        roomId: roomId,
+        params: { roomId: roomId },
       });
 
       room.value = currentRoom.data;
 
       if (room.value.status === "playing") isPlaying.value = true;
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
-      console.log(room.value);
+  const checkRoom = async () => {
+    try {
+      const response = await axios.get("/game/room", {
+        params: { roomId: currentRoom.value.id },
+      });
+
+      room.value = response.data;
+
+      if (room.value.status === "playing") isPlaying.value = true;
     } catch (error) {
       console.log(error);
     }
@@ -64,6 +76,7 @@ export const useRoomStore = defineStore("room", () => {
     startGame,
     getStories,
     deleteRoom,
+    checkRoom,
     currentRoom,
     isGamePlaying,
   };
