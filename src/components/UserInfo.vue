@@ -6,12 +6,9 @@ const user = useUserStore().userData;
 
 <template>
   <div class="d-flex flex-column align-items-center">
-    <img src="../assets/avatar.jpg" class="avatar" />
-    <p class="text-white fs-3 mb-0 mt-2">Иван Иванов</p>
-    <p class="text-white fs-6 fw-light opacity-50">IvanIvanov</p>
-    <!-- <img :src="user.photo_url" class="avatar" />
+    <img :src="user.photo_url" class="avatar" />
     <p class="text-white fs-3 mb-0 mt-2">{{ user.fullname }}</p>
-    <p class="text-white fs-6 fw-light opacity-50">{{ user.username }}</p> -->
+    <p class="text-white fs-6 fw-light opacity-50">{{ user.username }}</p>
   </div>
 </template>
 
