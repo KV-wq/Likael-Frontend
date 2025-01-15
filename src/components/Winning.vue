@@ -6,7 +6,7 @@ const props = defineProps({
 
 <template>
   <div class="rounded-4">
-    <div class="d-flex gap-2">
+    <div class="d-flex gap-2 align-items-center">
       <p class="text-white text-center mb-0">+{{ count }}</p>
       <div class="coin" />
     </div>
@@ -28,5 +28,6 @@ const props = defineProps({
   height: 50px;
   background: #ffc72d;
   border-radius: 100%;
+  transform: translateY(-1px);
 }
 </style>

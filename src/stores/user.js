@@ -42,16 +42,13 @@ export const useUserStore = defineStore("user", () => {
 
   const getUserHistory = async () => {
     try {
-      isLoading.value = true;
-      error.value = null;
-      const response = await axios.patch("/user/get-story", {
-        userId: user.value.id,
+      const response = await axios.get("/user/get-story", {
+        params: { userId: user.value.id },
       });
-      user.value.history = response.data; // Обновляем историю
+
+      return response.data;
     } catch (e) {
       error.value = e.response?.data?.error || e.message;
-    } finally {
-      isLoading.value = false;
     }
   };
 

@@ -27,7 +27,7 @@ async function setAnswer(answerIndex) {
 <template>
   <div class="h-100 d-flex flex-column justify-content-between">
     <img src="../assets/spinner.svg" v-if="isLoading" />
-    <div v-else>
+    <div v-if="story">
       <p class="text-center text-white mt-5 fs-2">{{ story.sin }}</p>
 
       <HistoryItem :text="story.description" />
