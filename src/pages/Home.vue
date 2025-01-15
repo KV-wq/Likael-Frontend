@@ -1,6 +1,9 @@
 <script setup>
 import TopBlock from "../components/TopBlock.vue";
 import router from "../router/router";
+
+import { useUserStore } from "../stores/user";
+const userStore = useUserStore();
 </script>
 
 <template>
@@ -16,7 +19,7 @@ import router from "../router/router";
       />
     </div>
 
-    <TopBlock />
+    <TopBlock :balance="userStore.userData.balance" />
   </div>
 </template>
 

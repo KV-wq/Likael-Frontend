@@ -6,6 +6,8 @@ export function useTelegram() {
   if (!user) {
     window.Telegram = {
       WebApp: {
+        initData:
+          "query_id=AAHq-aQZAAh-7zC4v7y8Jv2D&user=%7B%22id%22%3A123456789%2C%22first_name%22%3A%22Test%22%2C%22last_name%22%3A%22User%22%2C%22username%22%3A%22test_user%22%2C%22language_code%22%3A%22en%22%2C%22is_premium%22%3Atrue%7D&auth_date=1705380203&hash=b0c8a2867dd6e08a50a1e20f2b4f2f5e2e4b4a8c3c6f9e5a3b0c6d2b5a4b7e5c",
         initDataUnsafe: {
           user: {
             id: 123456789,

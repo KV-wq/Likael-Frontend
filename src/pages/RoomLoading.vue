@@ -1,18 +1,32 @@
 <script setup>
 import Topblock from "../components/TopBlock.vue";
 import router from "../router/router";
+import { useUserStore } from "../stores/user";
+import { useRoomStore } from "../stores/room";
+import { onMounted } from "vue";
+const userStore = useUserStore();
+const roomStore = useRoomStore();
 
-setTimeout(() => {
-  router.push("/first-player-room");
-  // router.push("/second-player-room");
-}, 3000);
+onMounted(async () => {
+  await roomStore.startGame();
+
+  console.log(roomStore.currentRoom);
+
+  if (roomStore.isGamePlaying) {
+    if (userStore.userData.current_side == 1) {
+      router.push("/first-player-room");
+    } else if (userStore.userData.current_side == 2) {
+      router.push("/second-player-room");
+    }
+  }
+});
 </script>
 
 <template>
   <div
     class="vh-100 bg-black d-flex flex-column justify-content-between align-items-center"
   >
-    <Topblock />
+    <Topblock :balance="userStore.userData.balance - 10" />
     <img src="../assets/spinner.svg" />
   </div>
 </template>
