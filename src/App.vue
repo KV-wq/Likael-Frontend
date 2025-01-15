@@ -12,7 +12,7 @@ const isNavbarVisible = computed(() => {
 
 const { tg } = useTelegram();
 
-onMounted(async () => {
+onMounted(() => {
   tg.ready();
 });
 </script>

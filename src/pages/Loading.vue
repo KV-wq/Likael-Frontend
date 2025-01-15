@@ -1,9 +1,11 @@
 <script setup>
 import { onMounted } from "vue";
 import router from "../router/router";
+import { useTelegram } from "../services/telegram";
 import { useUserStore } from "../stores/user";
 
 const userStore = useUserStore();
+const { tg } = useTelegram();
 
 onMounted(async () => {
   await userStore.auth(tg.initData);
