@@ -18,7 +18,7 @@ export const useRoomStore = defineStore("room", () => {
 
       const roomId = response.data.roomId;
 
-      const currentRoom = await axios.get("/room", {
+      const currentRoom = await axios.get("/game/room", {
         roomId: roomId,
       });
 
@@ -34,7 +34,7 @@ export const useRoomStore = defineStore("room", () => {
 
   const deleteRoom = async () => {
     try {
-      await axios.delete("/rooms", { id: room.id });
+      await axios.delete("/game/rooms", { id: room.id });
       room.value = null;
       isPlaying.value = false;
     } catch (error) {
@@ -44,7 +44,7 @@ export const useRoomStore = defineStore("room", () => {
 
   const getStories = async () => {
     try {
-      const response = await axios.get("/stories");
+      const response = await axios.get("/game/stories");
       return response.data;
     } catch (error) {
       console.log(error);
