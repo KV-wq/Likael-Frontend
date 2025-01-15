@@ -54,10 +54,47 @@ export const useRoomStore = defineStore("room", () => {
     }
   };
 
+  const setStory = async (id) => {
+    try {
+      const message = await axios.post("/game/rooms/set-story", {
+        roomId: currentRoom.value.id,
+        storyId: id,
+      });
+
+      room.value.story_id = message.data;
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   const getStories = async () => {
     try {
       const response = await axios.get("/game/stories");
       return response.data;
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const getStory = async (id) => {
+    try {
+      const response = await axios.get("/game/story", { params: { id: id } });
+
+      return response.data;
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const setAnswer = async (index) => {
+    try {
+      const response = await axios.post("/game/rooms/submit", {
+        roomId: currentRoom.value.id,
+        userId: user.id,
+        answerIndex: index,
+      });
+
+      console.log(response.data);
     } catch (error) {
       console.log(error);
     }
@@ -75,8 +112,11 @@ export const useRoomStore = defineStore("room", () => {
     setStage,
     startGame,
     getStories,
+    getStory,
     deleteRoom,
     checkRoom,
+    setStory,
+    setAnswer,
     currentRoom,
     isGamePlaying,
   };

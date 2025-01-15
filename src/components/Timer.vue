@@ -1,6 +1,10 @@
 <script setup>
-import { onMounted, ref } from "vue";
+import { onMounted, ref, watch } from "vue";
 import router from "../router/router";
+import { useRoomStore } from "../stores/room";
+import { useUserStore } from "../stores/user";
+
+const roomStore = useRoomStore();
 
 const time = ref(150);
 const formattedTime = ref("2:30");
@@ -23,9 +27,24 @@ onMounted(() => {
     } else {
       clearInterval(interval);
       formattedTime.value = "0:00";
+      roomStore.deleteRoom();
       router.push("/home");
     }
   }, 1000);
+});
+
+watch(roomStore.currentRoom, (newRoom) => {
+  if (newRoom.player1 == useUserStore().userData.id) {
+    if (newRoom.player2Answer) {
+      clearInterval(interval);
+      roomStore.setStage(roomStore.currentStage + 1);
+    }
+  } else if (newRoom.player2 == useUserStore().userData.id) {
+    if (newRoom.player1Answer) {
+      clearInterval(interval);
+      roomStore.setStage(roomStore.currentStage + 1);
+    }
+  }
 });
 </script>
 

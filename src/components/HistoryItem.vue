@@ -4,14 +4,14 @@ const props = defineProps({
     type: String,
     required: false,
   },
+  text: String,
 });
 </script>
 
 <template>
   <div class="rounded-4 px-3 py-4">
     <p class="text-white text-center mb-0">
-      Работник получает возможность приписать себе заслуги за проект, который не
-      завершил
+      {{ text }}
     </p>
     <p
       v-if="result == 'win'"
