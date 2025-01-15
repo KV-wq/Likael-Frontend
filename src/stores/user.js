@@ -12,8 +12,8 @@ export const useUserStore = defineStore("user", () => {
     try {
       isLoading.value = true;
       error.value = null;
-      const response = await axios.post("/user/auth", initData);
-      console.log(response);
+      const response = await axios.post("/user/auth", { initData: initData });
+      console.log(response.data);
       user.value = response.data.user;
       isLoggedIn.value = true;
     } catch (e) {
