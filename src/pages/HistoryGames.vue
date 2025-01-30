@@ -38,6 +38,6 @@ onMounted(async () => {
 <style scoped>
 .list {
   overflow: auto;
-  max-height: 78vh;
+  max-height: 70vh;
 }
 </style>

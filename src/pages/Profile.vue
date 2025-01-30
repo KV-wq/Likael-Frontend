@@ -13,7 +13,7 @@ import router from "../router/router";
         @click="() => router.push('/choise-side')"
       />
       <UserMenuItem
-        text="Истории"
+        text="История"
         @click="() => router.push('/history-games')"
       />
       <UserMenuItem text="FAQ" />
