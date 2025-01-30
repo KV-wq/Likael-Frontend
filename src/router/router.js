@@ -29,26 +29,26 @@ const routes = [
     name: "Profile",
     component: Profile,
   },
-  // {
-  //   path: "/room-loading",
-  //   name: "RoomLoading",
-  //   component: RoomLoading,
-  // },
-  // {
-  //   path: "/first-player-room",
-  //   name: "FirstPlayerRoom",
-  //   component: FirstPlayerRoom,
-  // },
-  // {
-  //   path: "/second-player-room",
-  //   name: "SecondPlayerRoom",
-  //   component: SecondPlayerRoom,
-  // },
-  // {
-  //   path: "/history-games",
-  //   name: "HistoryGames",
-  //   component: HistoryGames,
-  // },
+  {
+    path: "/room-loading",
+    name: "RoomLoading",
+    component: RoomLoading,
+  },
+  {
+    path: "/first-player-room",
+    name: "FirstPlayerRoom",
+    component: FirstPlayerRoom,
+  },
+  {
+    path: "/second-player-room",
+    name: "SecondPlayerRoom",
+    component: SecondPlayerRoom,
+  },
+  {
+    path: "/history-games",
+    name: "HistoryGames",
+    component: HistoryGames,
+  },
 ];
 
 const router = createRouter({
