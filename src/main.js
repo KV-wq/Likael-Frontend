@@ -6,7 +6,8 @@ import router from "./router/router";
 import { createPinia } from "pinia";
 import axios from "axios";
 
-axios.defaults.baseURL = "https://likael-backend.onrender.com";
+// axios.defaults.baseURL = "https://likael-backend.onrender.com";
+axios.defaults.baseURL = "http://localhost:3000";
 
 const pinia = createPinia();
 
