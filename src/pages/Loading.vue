@@ -12,7 +12,8 @@ onMounted(async () => {
   if (userStore.userData.current_side) {
     router.push("/home");
   } else {
-    router.push("/choise-side");
+    // router.push("/choise-side");
+    router.push("/home");
   }
 });
 </script>

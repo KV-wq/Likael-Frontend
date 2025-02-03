@@ -8,10 +8,10 @@ import router from "../router/router";
   <div class="vh-100 pt-4">
     <UserInfo />
     <div class="d-flex flex-column gap-2 mx-3 mt-3">
-      <UserMenuItem
+      <!-- <UserMenuItem
         text="Сменить сторону"
         @click="() => router.push('/choise-side')"
-      />
+      /> -->
       <UserMenuItem
         text="История"
         @click="() => router.push('/history-games')"

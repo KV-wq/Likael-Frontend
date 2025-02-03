@@ -13,7 +13,7 @@ export const useRoomStore = defineStore("room", () => {
     try {
       const response = await axios.post("/game/rooms", {
         userId: user.id,
-        side: user.current_side,
+        // side: user.current_side,
       });
 
       const roomId = response.data.roomId;
