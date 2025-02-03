@@ -8,8 +8,8 @@ const userStore = useUserStore();
 
 <template>
   <div class="vh-100 vw-100">
-    <div @click="() => router.push('/room-loading')">
-      <!-- <div> -->
+    <!-- <div @click="() => router.push('/room-loading')"> -->
+    <div>
       <img
         src="../assets/demon.svg"
         class="w-100 position-absolute bottom-0 demon"
