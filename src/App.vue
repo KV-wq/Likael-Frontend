@@ -3,7 +3,6 @@ import { computed, onMounted } from "vue";
 import Navbar from "./components/Navbar.vue";
 import { useNavbarStore } from "./stores/navbar";
 import { useTelegram } from "./services/telegram";
-
 const navbarStore = useNavbarStore();
 
 const isNavbarVisible = computed(() => {
@@ -14,6 +13,7 @@ const { tg } = useTelegram();
 
 onMounted(() => {
   tg.ready();
+  tg.expand();
 });
 </script>
 

@@ -3,12 +3,20 @@ import Topblock from "../components/TopBlock.vue";
 import router from "../router/router";
 import { useUserStore } from "../stores/user";
 import { useRoomStore } from "../stores/room";
-import { onMounted, watch } from "vue";
+import { onMounted, onUnmounted, watch } from "vue";
 const userStore = useUserStore();
 const roomStore = useRoomStore();
+let activityInterval;
+
+onUnmounted(() => {
+  clearInterval(activityInterval);
+});
 
 onMounted(async () => {
   await roomStore.startGame();
+  activityInterval = setInterval(() => {
+    roomStore.updateActivity();
+  }, 5000);
 });
 
 setInterval(() => {

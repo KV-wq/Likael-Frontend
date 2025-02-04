@@ -9,6 +9,18 @@ export const useRoomStore = defineStore("room", () => {
   const isPlaying = ref(false);
   const user = useUserStore().userData;
 
+  const updateActivity = async () => {
+    if (room.value?.player1 === user.id) {
+      try {
+        await axios.post("/game/rooms/activity", {
+          roomId: room.value.id,
+        });
+      } catch (error) {
+        console.error(error);
+      }
+    }
+  };
+
   const startGame = async () => {
     try {
       const response = await axios.post("/game/rooms", {
@@ -117,6 +129,7 @@ export const useRoomStore = defineStore("room", () => {
     checkRoom,
     setStory,
     setAnswer,
+    updateActivity,
     currentRoom,
     isGamePlaying,
   };
