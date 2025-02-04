@@ -13,19 +13,23 @@ onMounted(async () => {
 
 setInterval(() => {
   roomStore.checkRoom();
-}, 3000);
+}, 2000);
 
 watch(
   () => ({
     isGamePlaying: roomStore.isGamePlaying,
-    currentSide: userStore.userData.current_side,
+    room: roomStore.currentRoom,
   }),
-  ({ isGamePlaying, currentSide }) => {
-    if (isGamePlaying) {
-      if (currentSide == 1) {
-        router.push("/first-player-room");
-      } else if (currentSide == 2) {
-        router.push("/second-player-room");
+  ({ isGamePlaying, room }) => {
+    if (isGamePlaying && room) {
+      if (room.player1 === userStore.userData.id) {
+        router.push(
+          room.side1 === 1 ? "/first-player-room" : "/second-player-room"
+        );
+      } else {
+        router.push(
+          room.side1 === 1 ? "/second-player-room" : "/first-player-room"
+        );
       }
     }
   },
